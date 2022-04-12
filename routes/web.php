@@ -15,7 +15,7 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome1');
 });
 
 Route::middleware([
@@ -34,6 +34,5 @@ Route::controller(FacebookController::class)->group(function(){
 });
 
 
- 
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
