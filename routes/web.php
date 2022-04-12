@@ -15,7 +15,7 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome1');
 });
 
 Route::middleware([
