@@ -1,0 +1,10 @@
+[2022-04-11 09:08:12] production.ERROR: Call to undefined method Laravel\Sanctum\Sanctum::currentApplicationUrlWithPort() {"exception":"[object] (Error(code: 0): Call to undefined method Laravel\\Sanctum\\Sanctum::currentApplicationUrlWithPort() at D:\\Main Projects\\NFT Business\\jetstream\\config\\sanctum.php:21)
+[stacktrace]
+#0 D:\\Main Projects\\NFT Business\\jetstream\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(72): require()
+#1 D:\\Main Projects\\NFT Business\\jetstream\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#2 D:\\Main Projects\\NFT Business\\jetstream\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(239): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#3 D:\\Main Projects\\NFT Business\\jetstream\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#4 D:\\Main Projects\\NFT Business\\jetstream\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#5 D:\\Main Projects\\NFT Business\\jetstream\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 
