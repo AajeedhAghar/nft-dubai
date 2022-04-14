@@ -20,6 +20,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('0');
+            $table->string('gmail_id')->nullable();
+            $table->string('fb_id')->nullable();
+            $table->string('linkedin_id')->nullable();
             $table->string('acivated')->default('0');
             $table->string('status')->default('0');
             // $table->enum('status',['pending','cancelled','completed'])->default('pending');

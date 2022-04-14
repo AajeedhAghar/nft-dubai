@@ -20,7 +20,7 @@ use App\Http\Controllers\InvestorController ;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome1');
 });
 
 Route::middleware([
@@ -39,7 +39,6 @@ Route::controller(FacebookController::class)->group(function(){
 });
 
 
- 
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
@@ -48,7 +47,7 @@ Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback
 
 
 //  ************* Busnisses ***************
- 
+
 
 Route::get('businesses/create', [BusinessController::class, 'create']);
 Route::post('businesses.store', [BusinessController::class, 'store'])->name('businesses.store');
@@ -67,7 +66,11 @@ Route::post('investors/store', [InvestorController::class, 'store'])->name('inve
 
 
 //  ************* Currencies ***************
- 
+
 
 Route::get('currencies/create', [CurrencyController::class, 'create']);
+<<<<<<< HEAD
 Route::post('currencies/store', [CurrencyController::class, 'store'])->name('currencies.store');
+=======
+Route::post('currencies/store', [CurrencyController::class, 'store']);
+>>>>>>> f95d1f4231085134371eabaa6ca63aedf743bcb8

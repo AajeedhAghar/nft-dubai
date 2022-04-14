@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('activation')->default('not_activated');;
             $table->string('status')->default('onhold');
-            
             $table->timestamps();
-            
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('user_id');
 
