@@ -273,19 +273,19 @@
                             <div class="row mb-3">
                                 <label for="business_photos" class="col-sm-3 label">Add business and product photos</label>
                                 <div class="col-sm-7 input-otr">
-                                    <input type="file" class="form-control" id="business_photos" name="business_photos">
+                                    <input type="file" class="form-control" id="business_photos" name="business_photos[]" multiple>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="business_documents" class="col-sm-3 label">Add business documents</label>
                                 <div class="col-sm-7 input-otr">
-                                    <input type="file" class="form-control" id="business_documents" name="business_documents">
+                                    <input type="file" class="form-control" id="business_documents" name="business_documents[]" multiple>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="business_proof" class="col-sm-3 label">Attach proof of business for faster</label>
                                 <div class="col-sm-7 input-otr">
-                                    <input type="file" class="form-control" id="business_proof" name="business_proof">
+                                    <input type="file" class="form-control" id="business_proof" name="business_proof[]" multiple>
                                 </div>
                             </div>
 
@@ -293,7 +293,7 @@
                             <h4 class="head-2 heading-h4">Select a Plan</h4>
                             <div class="col-sm-10 ">
                                 <div class=" input-otr">
-                                    <input class="input-check" type="radio" name="plan_business" id="active_business">
+                                    <input class="input-check" type="radio" name="plan_business" id="active_business" value="Active">
                                     <label class="label" for="active_business">
                                         Active Business
                                     </label>
@@ -301,7 +301,7 @@
                             </div>
                             <div class="col-sm-10 ">
                                 <div class=" input-otr">
-                                    <input class="input-check" type="radio" name="plan_business" id="fast_track_Business">
+                                    <input class="input-check" type="radio" name="plan_business" id="fast_track_Business" value="Fast_Track">
                                     <label class="label" for="fast_track_Business">
                                         Fast Track Business
                                     </label>
@@ -309,7 +309,7 @@
                             </div>
                             <div class="col-sm-10 ">
                                 <div class=" input-otr">
-                                    <input class="input-check" type="radio" name="plan_business" id="professional_business">
+                                    <input class="input-check" type="radio" name="plan_business" id="professional_business" value="Professional">
                                     <label class="label" for="professional_business">
                                         Professional Business
                                     </label>

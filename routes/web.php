@@ -41,15 +41,15 @@ Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 
+/*
 Route::group(['middleware'=>'guest:web','namespace'=>'App\Http\Controllers\site'],function(){
 
     Route::get('create_business_profile' , 'createProfileCountroller@creteBusiness')->name('site.createBusinessProfile');
     Route::get('create_franchise_profile' , 'createProfileCountroller@creteFranchise')->name('site.createFranchiseProfile');
     Route::get('create_investor_profile' , 'createProfileCountroller@creteInvestor')->name('site.createInvestorProfile');
 
-
 });
-
+*/
 
 
 
@@ -59,6 +59,9 @@ Route::group(['middleware'=>'guest:web','namespace'=>'App\Http\Controllers\site'
 
 Route::get('businesses/create', [BusinessController::class, 'create']);
 Route::post('businesses/store', [BusinessController::class, 'store']);
+
+
+
 
 //  ************* Currencies ***************
 

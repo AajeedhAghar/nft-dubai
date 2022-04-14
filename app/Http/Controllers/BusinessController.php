@@ -26,11 +26,11 @@ class BusinessController extends Controller
     public function create(Request $request)
     {
 
-        return view('businesses.create');
+        return view('layouts.business.createBusinessProfile');
 
     }
 
- 
+
     public function store(Request $request)
     {
 
@@ -43,12 +43,12 @@ class BusinessController extends Controller
 
         if( !$profile->save())
         {
-    
+
         }
         else
         {
         // 2.Saving Business   Details
-    
+
             $business = new Business;
             $business->name = $request->name;
             $business->company_name = $request->company_name;
@@ -78,14 +78,14 @@ class BusinessController extends Controller
 
             // 3.Saving Industry   Details (Loop)
 
-            
+
             //  $industryProfilesModels = [];
             // foreach ($request->industryProfiles as $industryProfile) {
             //     $industryProfilesModels[] = new IndustryProfile($industryProfile);
             // }
-            
+
             // $profile->industryProfiles()->saveMany($skillModels);
- 
+
             // if ($request->filled('industry_id'))
             // {
             // $industryProfile = new IndustryProfile;
@@ -98,20 +98,20 @@ class BusinessController extends Controller
             // foreach ($request->skills as $skill) {
             //     $skillsModels[] = new Skill($skill);
             // }
-            
+
             // $user->skills()->saveMany($skillModels);
 
 
-            
-            // // 4.Saving File   Details
-             
 
-            
+            // // 4.Saving File   Details
+
+
+
             //     $fileModels = [];
             // foreach ($request->files as $file) {
             //     $skillsModels[] = new File($skill);
             // }
-            
+
             // $user->skills()->saveMany($skillModels);
 
 
@@ -144,12 +144,12 @@ class BusinessController extends Controller
 
             // // 6.Saving    Profileplan    Details
 
-               
+
             //     $fileModels = [];
             // foreach ($request->files as $file) {
             //     $skillsModels[] = new File($skill);
             // }
-            
+
             // $user->skills()->saveMany($skillModels);
 
 
@@ -160,19 +160,19 @@ class BusinessController extends Controller
             $profilePlan->plan_id = $request->plan_id;
             $profile->profilePlans()->save($profilePlan);
             }
-        
-     
-     
 
-        
+
+
+
+
 
     //         $myItems = [
     //             ['title'=>'HD Topi','description'=>'It solution stuff'],
     //             ['title'=>'HD Topi 2','description'=>'It solution stuff 2'],
     //             ['title'=>'HD Topi 3','description'=>'It solution stuff 3']
     //         ];
-    
-    
+
+
     // DB::table("items")->insert($myItems);
 
 // for()
@@ -184,7 +184,7 @@ class BusinessController extends Controller
 //         ['file_name' => 'Comment 2'],
 //       ]);
 // }
-  
+
 
 
           }
@@ -192,18 +192,18 @@ class BusinessController extends Controller
         return back()->with('message', 'item stored successfully');
     }
 
-    
+
     public function show(Business $business)
     {
         return view('businesses.show', compact('business'));
     }
- 
+
     public function edit(Business $business)
     {
         return view('businesses.edit', compact('business'));
     }
 
-    
+
     public function update(Request $request, Business $business)
     {
         $business->update($request->all());
@@ -211,7 +211,7 @@ class BusinessController extends Controller
         return back()->with('message', 'item updated successfully');
     }
 
-    
+
     public function destroy(Business $business)
     {
         $business->delete();

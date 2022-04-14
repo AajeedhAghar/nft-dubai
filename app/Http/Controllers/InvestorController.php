@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class InvestorController extends Controller
 {
-    
+
     public function index()
     {
 
@@ -16,17 +16,18 @@ class InvestorController extends Controller
         return view('investors.index', compact('investors'));
     }
 
-     
+
     public function create(Request $request)
     {
-        return view('investors.create');
-      
+
+        return view('layouts.investor.createInvestorProfile');
+
     }
- 
+
     public function store(Request $request)
     {
-      
- 
+
+
         $request->merge(['user_id' => Auth::user()->id]);
         Investor::create($request->all());
 
@@ -34,21 +35,21 @@ class InvestorController extends Controller
 
     }
 
-     
+
     public function show(Investor $investor)
     {
         return view('investors.show', compact('investor'));
-        
+
     }
 
-    
+
     public function edit(Investor $investor)
     {
         return view('investors.edit', compact('investor'));
-      
+
     }
 
-     
+
     public function update(Request $request, Investor $investor)
     {
         $investor->update($investor->all());
@@ -56,7 +57,7 @@ class InvestorController extends Controller
         return back()->with('message', 'item updated successfully');
     }
 
-   
+
     public function destroy(Investor $investor)
     {
         $investor->delete();
