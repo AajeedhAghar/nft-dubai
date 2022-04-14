@@ -654,8 +654,8 @@
 .navbar-main .container-fluid .navbar-inr .navigation-otr .navigation-inr .nav-li .dropdown-otr {
   position: absolute;
   top: 100px;
-  left: -24px;
-  width: 220px;
+  left: -50px;
+  width: 250px;
   padding: 16px 24px;
   opacity: 0;
   visibility: hidden;

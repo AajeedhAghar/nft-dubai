@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
+use App\Http\Controllers\CurrencyController ;
+use App\Http\Controllers\BusinessController ;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +39,19 @@ Route::controller(FacebookController::class)->group(function(){
 
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
+
+
+
+
+
+//  ************* Busnisses ***************
+
+
+Route::get('businesses/create', [BusinessController::class, 'create']);
+Route::post('businesses/store', [BusinessController::class, 'store']);
+
+//  ************* Currencies ***************
+
+
+Route::get('currencies/create', [CurrencyController::class, 'create']);
+Route::post('currencies/store', [CurrencyController::class, 'store']);

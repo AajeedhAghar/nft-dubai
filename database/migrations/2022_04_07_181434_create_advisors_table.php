@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('users', function ($table) {
-            $table->string('linkedin_id')->nullable();
-            
+        Schema::create('advisors', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->unsignedBigInteger('profile_id');
+
+            $table->timestamps();
         });
     }
 
@@ -27,10 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('users', function ($table) {
-            $table->dropColumn('linkedin_id');
-          
-         });
+        Schema::dropIfExists('advisors');
     }
 };

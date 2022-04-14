@@ -14,14 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->default('0');
+            $table->string('gmail_id')->nullable();
+            $table->string('fb_id')->nullable();
+            $table->string('linkedin_id')->nullable();
+            $table->string('acivated')->default('0');
+            $table->string('status')->default('0');
+            // $table->enum('status',['pending','cancelled','completed'])->default('pending');
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }
