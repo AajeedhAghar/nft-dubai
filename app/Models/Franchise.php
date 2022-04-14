@@ -13,11 +13,13 @@ class Franchise extends Model
     protected $guarded = [];
     public function profile()
     {
-        return $this->belongsTo('App\Profile');
+        return $this->belongsTo(Profile::class);
     }
 
     public function format()
     {
-        return $this->hasMany('App\Format');
+        return $this->hasMany(Format::class);
+
+        
     }
 }

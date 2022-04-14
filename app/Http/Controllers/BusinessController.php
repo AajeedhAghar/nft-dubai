@@ -8,6 +8,7 @@ use App\Models\IndustryProfile;
 use App\Models\Profile;
 use App\Models\Socialmedia;
 use App\Models\ProfilePlan;
+use App\Models\Industry;
 
 
 use Illuminate\Http\Request;
@@ -26,13 +27,17 @@ class BusinessController extends Controller
     public function create(Request $request)
     {
 
-        return view('businesses.create');
+        $industries = Industry::all();
+        $plans = Plan::all();
+
+        return view('businesses.create' ,compact('businesses','industries','plans'));
 
     }
 
  
     public function store(Request $request)
     {
+        //  dd($request);
 
         // 1. Saving Profile   Details
         $profile = new Profile;
@@ -55,8 +60,8 @@ class BusinessController extends Controller
             $business->phone = $request->phone;
             $business->email = $request->email;
             $business->role = $request->role;
-            $business->display_contact = $request->display_contact;
-            $business->display_company = $request->display_company;
+            $business->display_contact = 1;
+            $business->display_company = 1;
             $business->establish_date = $request->establish_date;
             $business->interest = $request->interest;
             $business->location = $request->location;
@@ -86,13 +91,13 @@ class BusinessController extends Controller
             
             // $profile->industryProfiles()->saveMany($skillModels);
  
-            // if ($request->filled('industry_id'))
-            // {
-            // $industryProfile = new IndustryProfile;
-            // $industryProfile->profile_id=$profile->id;
-            // $industryProfile->industry_id=$request->industry_id;
-            // $profile->industryProfiles()->save($industryProfile);
-            // }
+            if ($request->filled('industry_id'))
+            {
+            $industryProfile = new IndustryProfile;
+            $industryProfile->profile_id=$profile->id;
+            $industryProfile->industry_id=$request->industry_id;
+            $profile->industryProfiles()->save($industryProfile);
+            }
 
                 // $skillModels = [];
             // foreach ($request->skills as $skill) {
@@ -116,21 +121,26 @@ class BusinessController extends Controller
 
 
 
-            // $request->validate([
-            //     'file' => 'required|mimes:csv,txt,xlx,xls,pdf,png|max:2048'
-            //     ]);
-            // $file = new File;
-            // if($request->file() && $request->filled('fileName')) {
-            //     $fileName = $profile->name.$request->type.'_'.$req->file->getClientOriginalName();
-            //     $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
-            //     $file->name =   $fileName;
-            //     $file->type =   $request->type;
-            //     $file->path = '/storage/' . $filePath;
+            $request->validate([
+                'business_proof' => 'mimes:csv,txt,pdf,png,pdf,docx,doc,txt|max:2048'
+                ]);
+            $file = new File;
+                    if(isset($request->business_proof) ){
+                $fileName = $profile->name.'_'.$request->type.'_'.$request->business_proof->getClientOriginalName();
+                $filePath = $request->file('business_proof')->storeAs('uploads\businesses', $fileName, 'public');
+                $file->name =   $fileName;
+                $file->type =   $request->type;
+                $file->path = '/storage/' . $filePath;
             // return back()
             // ->with('success','File has been uploaded.')
             // ->with('file', $fileName);
 
-            // $profile->files()->save($file);
+            $profile->files()->save($file);
+                }
+                else 
+                {
+                    dd("file");
+                }
 
             // 5.Saving Social Media   Details (validation)
             $socialmedia = new Socialmedia;
@@ -143,23 +153,13 @@ class BusinessController extends Controller
             $profile->socialmedia()->save($socialmedia);
 
             // // 6.Saving    Profileplan    Details
-
-               
-            //     $fileModels = [];
-            // foreach ($request->files as $file) {
-            //     $skillsModels[] = new File($skill);
+            // if ($request->filled('plan_id'))
+            // {
+            // $profilePlan = new ProfilePlan;
+            // $profilePlan->profile_id = $profile->id;
+            // $profilePlan->plan_id = $request->plan_id;
+            // $profile->profilePlans()->save($profilePlan);
             // }
-            
-            // $user->skills()->saveMany($skillModels);
-
-
-            if ($request->filled('plan_id'))
-            {
-            $profilePlan = new ProfilePlan;
-            $profilePlan->profile_id = $profile->id;
-            $profilePlan->plan_id = $request->plan_id;
-            $profile->profilePlans()->save($profilePlan);
-            }
         
      
      
@@ -186,11 +186,11 @@ class BusinessController extends Controller
 // }
   
 
+return back()->with('message', 'item stored successfully');
 
           }
+        }
 
-        return back()->with('message', 'item stored successfully');
-    }
 
     
     public function show(Business $business)

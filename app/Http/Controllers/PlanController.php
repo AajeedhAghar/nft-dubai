@@ -28,6 +28,13 @@ class PlanController extends Controller
          
         ]);
 
+ 
+      
+        Plan::create($request->all());
+        return redirect()->route('plans.index')
+                        ->with('success','item created successfully.');
+
+
        
         return redirect()->route('plans.index')
                         ->with('success','item created successfully.');

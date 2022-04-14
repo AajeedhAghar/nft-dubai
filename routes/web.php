@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\CurrencyController ;
+use App\Http\Controllers\FranchiseController ;
 use App\Http\Controllers\BusinessController ;
+use App\Http\Controllers\InvestorController ;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,10 +51,23 @@ Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback
  
 
 Route::get('businesses/create', [BusinessController::class, 'create']);
-Route::post('businesses/store', [BusinessController::class, 'store']);
+Route::post('businesses.store', [BusinessController::class, 'store'])->name('businesses.store');
+
+
+//  ************* Franchises ***************
+
+Route::get('franchises/create', [FranchiseController::class, 'create']);
+Route::post('franchises/store', [FranchiseController::class, 'store'])->name('franchises.store');
+
+
+//  ************* Investor ***************
+
+Route::get('investors/create', [InvestorController::class, 'create']);
+Route::post('investors/store', [InvestorController::class, 'store'])->name('investors.store');
+
 
 //  ************* Currencies ***************
  
 
 Route::get('currencies/create', [CurrencyController::class, 'create']);
-Route::post('currencies/store', [CurrencyController::class, 'store']);
+Route::post('currencies/store', [CurrencyController::class, 'store'])->name('currencies.store');

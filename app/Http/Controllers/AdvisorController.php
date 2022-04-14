@@ -77,31 +77,31 @@ class AdvisorController extends Controller
           
 
          
-         //     $fileModels = [];
-         // foreach ($request->files as $file) {
-         //     $skillsModels[] = new File($skill);
+          
+         $request->validate([
+            'business_proof' => 'mimes:csv,txt,pdf,png,pdf,docx,doc,txt|max:2048'
+            ]);
+
+             // $skillModels = [];
+         // foreach ($request->skills as $skill) {
+         //     $skillsModels[] = new Skill($skill);
          // }
          
          // $user->skills()->saveMany($skillModels);
 
-
-
-         // $request->validate([
-         //     'file' => 'required|mimes:csv,txt,xlx,xls,pdf,png|max:2048'
-         //     ]);
-         // $file = new File;
-         // if($request->file() && $request->filled('fileName')) {
-         //     $fileName = $profile->name.$request->type.'_'.$req->file->getClientOriginalName();
-         //     $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
-         //     $file->name =   $fileName;
-         //     $file->type =   $request->type;
-         //     $file->path = '/storage/' . $filePath;
-         // return back()
-         // ->with('success','File has been uploaded.')
-         // ->with('file', $fileName);
+        $file = new File;
+                if(isset($request->business_proof ) ){
+            $fileName = $profile->name.'_'.$request->type.'_'.$request->business_proof->getClientOriginalName();
+            $filePath = $request->file(' ')->storeAs('uploads\advisors', $fileName, 'public');
+            $file->name =   $fileName;
+            $file->type =   $request->type;
+            $file->path = '/storage/' . $filePath;
+        // return back()
+        // ->with('success','File has been uploaded.')
+        // ->with('file', $fileName);
 
          $profile->files()->save($file);
-
+         {
          // 5.Saving Social Media   Details (validation)
          $socialmedia = new Socialmedia;
          $socialmedia->website = $request->website;
@@ -111,7 +111,8 @@ class AdvisorController extends Controller
          $socialmedia->facebook = $request->facebook;
          $socialmedia->other = $request->other;
          $profile->socialmedia()->save($socialmedia);
-
+         }
+        }
          // // 6.Saving    Profileplan    Details
          // if ($request->filled('plan_id'))
          // {
@@ -121,7 +122,8 @@ class AdvisorController extends Controller
          // $profile->profilePlans()->save($profilePlan);
          // }
      
-  
+         }
+        }
   
 
      
@@ -135,25 +137,11 @@ class AdvisorController extends Controller
  
  // DB::table("items")->insert($myItems);
 
-// for()
-// {
-//     path?
-//     $profile->files()->saveMany([
-//         ['name' => 'Comment 1'],
-//         ['file_name' => 'Comment 2'],
-//         ['file_name' => 'Comment 2'],
-//       ]);
-// }
-
+ 
 
 
   
-
-}
-
-          }
-
-
+ 
      
     public function show(Advisor $advisor)
     {

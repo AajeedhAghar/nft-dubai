@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Franchise;
 use App\Models\Format;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Models\File;
+use App\Models\IndustryProfile;
+use App\Models\Socialmedia;
+use App\Models\ProfilePlan;
 
 class FranchiseController extends Controller
 {
@@ -29,7 +34,9 @@ class FranchiseController extends Controller
       // 1. Saving Profile table Details
         $profile = new Profile;
         $profile->type =  'franchise';
-        $profile->user_id =   auth::user()->id;
+        // $profile->user_id =   auth::user()->id;
+        $profile->user_id =   1;
+
   
      if( !$profile->save())
     {
@@ -57,8 +64,11 @@ class FranchiseController extends Controller
         $franchise->expand_locations = $request->expand_location;
         $franchise->procedure = $request->procedure;
         $franchise->franchise_format_count = $request->franchise_format_count;
-        $franchise->business_proof = $request->business_proof;
         $franchise->profile_id = $profile->id;
+
+
+      
+
       }
 
 
@@ -80,7 +90,6 @@ class FranchiseController extends Controller
         $format->profit_margin = $request->profit_margin;
   
         $format->save();
-        return back()->with('message', 'item stored successfully');
 
         $franchise->format()->save($format);
       
@@ -106,12 +115,12 @@ class FranchiseController extends Controller
             $profile->industryProfiles()->save($industryProfile);
             }
 
-                $skillModels = [];
-            foreach ($request->skills as $skill) {
-                $skillsModels[] = new Skill($skill);
-            }
+            //     $skillModels = [];
+            // foreach ($request->skills as $skill) {
+            //     $skillsModels[] = new Skill($skill);
+            // }
             
-            $user->skills()->saveMany($skillModels);
+            // $user->skills()->saveMany($skillModels);
 
 
             
@@ -197,7 +206,7 @@ class FranchiseController extends Controller
 //       ]);
 // }
      
-     
+      
  
     }
 
