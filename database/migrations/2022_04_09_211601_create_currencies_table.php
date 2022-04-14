@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->string('fb_id')->nullable();
+        Schema::create('currencies', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->string('short_name')->nullable();
+            $table->string('api_id')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,9 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->dropColumn('fb_id');
-        });
+        Schema::dropIfExists('currencies');
     }
 };

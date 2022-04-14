@@ -3,7 +3,6 @@
 
 </style>
 <body>
-<div class="loader"></div>
 
 
 

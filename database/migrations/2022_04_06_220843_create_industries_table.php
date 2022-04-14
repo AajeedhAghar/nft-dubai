@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('users', function ($table) {
-            $table->string('social_id')->nullable();
-            $table->string('social_type')->nullable();
+        Schema::create('industries', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('sector');
+            $table->string('details')->nullable();
+
+            $table->timestamps();
+
+       
+
         });
-        
     }
 
     /**
@@ -28,11 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-
-        Schema::table('users', function ($table) {
-            $table->dropColumn('social_id');
-           $table->dropColumn('social_type');
-         });
+        Schema::dropIfExists('industries');
     }
 };
