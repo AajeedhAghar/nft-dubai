@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//API Profile Controller
+
+Route::get('profiles',[ApiProfileController::class, 'index']);
+Route::get("profiles/{profile}", [ApiProfileController::class, 'show']);
+Route::post('profiles', [ApiProfileController::class, 'store']);
+Route::put('profiles/{profile}', [ApiProfileController::class, 'update']);
+Route::delete('profiles/{profile}', [ApiProfileController::class, 'delete']);
+
+//API User Controller
+
+Route::get('users', [UserController::class, 'index']);

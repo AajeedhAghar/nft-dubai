@@ -10,50 +10,50 @@ use App\Models\Socialmedia;
 
 class AdvisorController extends Controller
 {
-   
+
     public function index()
     {
-        
+
     }
 
-    
+
     public function create()
     {
         //
     }
 
-   
+
     public function store(Request $request)
     {
-        
+
         // 1. Saving Profile   Details
         $profile = new Profile;
         $profile->type =  'advosir';
-        $profile->user_id =   auth::user()->id;
+        $profile->user_id = auth::user()->id;
 
 
         if( !$profile->save())
         {
-    
+
         }
         else
         {
         // 2.Saving Advisor   Details
 
 
-    
+
          $advisor = new Advisor;
          $profile->advisor()->save($advisor);
 
 
          // 3.Saving Industry   Details (Loop)
 
-            
+
          $industryProfilesModels = [];
          foreach ($request->industryProfiles as $industryProfile) {
              $industryProfilesModels[] = new IndustryProfile($industryProfile);
          }
-         
+
          $profile->industryProfiles()->saveMany($skillModels);
 
          if ($request->filled('industry_id'))
@@ -68,20 +68,20 @@ class AdvisorController extends Controller
          // foreach ($request->skills as $skill) {
          //     $skillsModels[] = new Skill($skill);
          // }
-         
+
          // $user->skills()->saveMany($skillModels);
 
 
-         
-         // // 4.Saving File   Details
-          
 
-         
+         // // 4.Saving File   Details
+
+
+
          //     $fileModels = [];
          // foreach ($request->files as $file) {
          //     $skillsModels[] = new File($skill);
          // }
-         
+
          // $user->skills()->saveMany($skillModels);
 
 
@@ -120,19 +120,19 @@ class AdvisorController extends Controller
          // $profilePlan->plan_id = $request->plan_id;
          // $profile->profilePlans()->save($profilePlan);
          // }
-     
-  
-  
 
-     
+
+
+
+
 
  //         $myItems = [
  //             ['title'=>'HD Topi','description'=>'It solution stuff'],
  //             ['title'=>'HD Topi 2','description'=>'It solution stuff 2'],
  //             ['title'=>'HD Topi 3','description'=>'It solution stuff 3']
  //         ];
- 
- 
+
+
  // DB::table("items")->insert($myItems);
 
 // for()
@@ -147,32 +147,32 @@ class AdvisorController extends Controller
 
 
 
-  
+
 
 }
 
           }
 
 
-     
+
     public function show(Advisor $advisor)
     {
         //
     }
 
-     
+
     public function edit(Advisor $advisor)
     {
         //
     }
 
-   
+
     public function update(Request $request, Advisor $advisor)
     {
         //
     }
 
-   
+
     public function destroy(Advisor $advisor)
     {
         //
